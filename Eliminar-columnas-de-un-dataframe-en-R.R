@@ -19,6 +19,7 @@ head(datos, n=9)
 
 borrar <- c("valor","categoria")
 datos2 <- datos[ , !(names(datos) %in% borrar)]
+
 head(datos2, n=9)
 
 
@@ -30,5 +31,7 @@ head(datos2, n=9)
 library(dplyr)
 
 datos2 <- select(datos, -valor, -categoria) # Forma simple 1
-datos2 <- select(datos, id, valor, categoria) # Forma simple 2
+
+datos2 <- select(datos, id, color) # Forma simple 2
+
 head(datos2, n=9)

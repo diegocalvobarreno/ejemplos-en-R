@@ -7,13 +7,6 @@ set.seed(1234)
 valor <- rnorm(15,25,10)
 datos <- data.frame( anio, valor)
 
-#install.packages("ggplot2") # Instalar paquete de manipulación de dataframes
-library(ggplot2)
-ggplot(datos, aes(x=anio, y=valor )) + 
-  geom_line(colour="red")  + 
-  geom_point( size=2, shape=21, fill="white", colour="red") + 
-  theme_minimal()
-
 # --------------------------------------------------------------
 # Visualizar el Gráfico de líneas simple
 # --------------------------------------------------------------
@@ -25,6 +18,8 @@ ggplot(datos, aes(x=anio, y=valor )) +
   geom_line(colour="red")  + 
   geom_point( size=2, shape=21, fill="white", colour="red") + 
   theme_minimal()
+
+
 
 
 # --------------------------------------------------------------
@@ -41,12 +36,11 @@ anio <- c(2000,2001,2002,2003,2004,
 
 set.seed(1234)
 valor <- rnorm(15,25,10)
-
 datos <- data.frame(tipo, anio, valor)
 
 
 # --------------------------------------------------------------
-# Visualizar el Gráfico de líneas simple
+# Visualizar el Gráfico de líneas multiple
 # --------------------------------------------------------------
 
 library(ggplot2)

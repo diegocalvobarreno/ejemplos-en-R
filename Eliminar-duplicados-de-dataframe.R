@@ -1,6 +1,4 @@
 
-# http://www.diegocalvo.es/eliminar-duplicados-dataframes-r/
-
 # --------------------------------------------------------------
 # Cargar datos del dataframe
 # --------------------------------------------------------------
@@ -19,6 +17,16 @@ head(datos, n=10)
 duplicated(datos)
 
 
+
+# --------------------------------------------------------------
+# Seleccionar duplicados de un dataframe (forma farragosa)
+# --------------------------------------------------------------
+
+datos[duplicated(datos), ]
+
+
+
+
 # --------------------------------------------------------------
 # Eliminar duplicados de un dataframe (forma farragosa)
 # --------------------------------------------------------------
@@ -35,19 +43,13 @@ nrow(datos[duplicated(datos), ])
 
 
 
+
 # --------------------------------------------------------------
 # Eliminar duplicados de un dataframe (forma simple, paquete base)
 # --------------------------------------------------------------
 
 unique(datos)
 
-
-
-# --------------------------------------------------------------
-# Seleccionar duplicados de un dataframe (forma farragosa)
-# --------------------------------------------------------------
-
-datos[duplicated(datos), ]
 
 
 # --------------------------------------------------------------

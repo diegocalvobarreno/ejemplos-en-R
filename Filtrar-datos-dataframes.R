@@ -11,6 +11,7 @@ pais <- c(rep("francia",3),rep("italia",3),rep("portugal",4))
 datos <- data.frame(nombre=nombre,sexo=sexo,edad=edad,pais=pais)
 head(datos, n=10)
 
+
 # --------------------------------------------------------------
 # Filtrar datos de un dataframe (forma farragosa)
 # --------------------------------------------------------------
@@ -32,24 +33,24 @@ filter(datos, sexo == "hombre" , pais == "francia", edad >= 18) # AND Lógico
 # Filtrar datos de un dataframe (forma simple, ejemplo 2)
 # --------------------------------------------------------------
 
-filter(datos, ( sexo == "hombre" | pais == "francia" ) , edad >= 18) # OR Lógico
+filter(datos, ( sexo == "hombre" | pais == "francia" ) , edad >= 18) # OR y AND Lógico
 
 
 # --------------------------------------------------------------
 # Filtrar datos de un dataframe (forma simple, ejemplo 3)
 # --------------------------------------------------------------
 
-filter(datos, xor( sexo == "hombre", pais == "francia") , edad >= 18) # OR Lógico
+filter(datos, xor( sexo == "hombre", pais == "francia") , edad >= 18) # XOR y AND Lógico
 
 
 
 # --------------------------------------------------------------
-# Filtrar datos de un dataframe (forma simple, ejemplo 3)
+# Filtrar datos de un dataframe (forma simple, ejemplo 4)
 # --------------------------------------------------------------
-filter(datos, sexo != "hombre", pais %in% c("francia", "italia"))
+filter(datos, sexo != "hombre", pais %in% c("francia", "italia")) # Negación y Contenido en un grupo
 
 
 # --------------------------------------------------------------
-# Filtrar datos de un dataframe (pipe %>%, ejemplo 4)
+# Filtrar datos de un dataframe (pipe %>%, ejemplo 5)
 # --------------------------------------------------------------
-datos %>% filter(row_number() <= 4) 
+datos %>% filter(row_number() <= 4) # Seleccinar n elementos

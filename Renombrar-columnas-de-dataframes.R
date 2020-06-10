@@ -16,5 +16,8 @@ head(datos, n=10)
 # Renombrar columnas de un dataframe
 # --------------------------------------------------------------
 
+#install.packages("dplyr") # Instalar de manipulación de dataframes "dplyr"
+library(dplyr) # Cargar la librería de manipulación de dataframes "dplyr"
+
 datos <- rename(datos, nuevo_nombre=nombre, nueva_edad = edad)
 datos

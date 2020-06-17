@@ -1,21 +1,80 @@
 ---
-title: "R Notebook"
-output: html_notebook
+title: 'Nombre del proyecto'
+author: "Diego Calvo"
+date: "2020"
+output: 
+  html_document:
+    fig_height: 5
+    fig_width: 7
+    number_sections: yes
+    theme: journal
+    toc: yes
+    toc_depth: 2
+  pdf_document:
+    toc: yes
+  word_document: default
 ---
 
-https://markdown.es/sintaxis-markdown/
+---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+# Información sobre Markdown
+En este enlace de [R Markdown](http://rmarkdown.rstudio.com) podremos encontrar información de como utilizar la librería.
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
 
-```{r}
-plot(cars)
+# Carga librerías
+En este apartado se cargarán las *librerias* a utilizar pero para no _emborronar el código_, no mostraremos la ejecución.
+
+```{r,eval=TRUE, echo=TRUE, warning=FALSE, message=FALSE, results='hide'}
+
+#install.packages("ggplot2")
+library(ggplot2) # Cargar la librería gráfica "ggplot2"
+
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+# Dataframe
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+## Carga de datos
+En este apartado se cargarán los datos relativos al dataframe a visualizar
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+```{r}
+anio <- c(2001:2015)
+set.seed(1234)
+valor <- rnorm(15,25,10)
+datos <- data.frame( anio, valor)
+
+```
+
+## Mostrar dataframe
+En este apartado se mostrarán los datos relativos al dataframe a visualizar
+
+```{r}
+datos 
+```
+
+# Visualizar gráfico
+En este apartado se visualizará un gráfico usando ggplot
+```{r}
+ggplot(datos, aes(x=anio, y=valor )) + 
+  geom_line(colour="red")  + 
+  geom_point( size=2, shape=21, fill="white", colour="red") + 
+  theme_minimal()
+
+```
+
+
+# Otros funciones de markdown
+
+# Citas
+> Podemos incluir citas
+
+# Listas
+- Primero
+- Segundo
+
+* Primero 
+* Segundo
+
+- Primero
+  - Primero A
+  - Primero B
 

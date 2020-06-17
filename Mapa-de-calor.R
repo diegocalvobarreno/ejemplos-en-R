@@ -4,8 +4,12 @@
 # --------------------------------------------------------------
 
 # Cargar librerias
-library(reshape2)
-library(ggplot2)
+# --------------------------------------------------------------
+install.packages("reshape2") # Instalar paquete modificar dataframes
+library(reshape2) # Cargar la librería "reshape2"
+
+#install.packages("ggplot2") # Instalar paquete de visualización gráfica
+library(ggplot2) # Cargar la librería gráfica "ggplot2"
 
 
 # Generar la matriz
@@ -13,7 +17,7 @@ library(ggplot2)
 
 # Definir nombres de filas y columnas
 nombre_genes <- paste(rep("Gen", 10), LETTERS[1:10], sep="_") # Nombres de Filas
-nombre_pacientes <- paste(rep("Paciente", 5), seq(1,5,1), sep="_") # NOmbres de Columnas
+nombre_pacientes <- paste(rep("Paciente", 5), seq(1,5,1), sep="_") # Nombres de Columnas
 
 # Generar valores aleatorios de la matriz
 valores <- data.frame(genes = nombre_genes, # Poner nombre a las columnas
@@ -24,7 +28,7 @@ valores <- data.frame(genes = nombre_genes, # Poner nombre a las columnas
 # Poner nombre a las filas
 names(valores)[2:(length(nombre_pacientes)+1)] <- nombre_pacientes
 
-#Vsualizar el conjunto de datos a mostrar en el mapa de calor
+#Visualizar el conjunto de datos a mostrar en el mapa de calor
 valores
 
 

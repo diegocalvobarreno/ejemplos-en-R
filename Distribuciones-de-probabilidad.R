@@ -4,26 +4,56 @@
 
 # Explicacion
 # https://gonzalezgouveia.com/analisis-exploratorio-de-datos-en-r/#Percentiles_y_BoxPlot
-  
+
+set.seed(1234) 
+
 # --------------------------------------------------------------
 # Distribución normal
 # --------------------------------------------------------------
 
 
-x <- rnorm(1000, mean = 10, sd = 1)
+# Función de densidad de probabilidad
+# --------------------------------------------------------------
 
-hist(x, col="lightskyblue")
+n<-seq(-4,4,0.1)  # 81 puntos de -4 a 4 en intervalos de 0,1
+datos <- data.frame(n=n, 
+                    densidad=dnorm(n, mean=0, sd=1),
+                    distribucion=pnorm(n, mean=0, sd=1)) 
+
+ggplot(datos, aes(x=n, y=densidad )) + 
+      geom_line(colour="red")  + 
+      ggtitle ("Función normal de densidad \ndnorm( media=0, desviacion=1)") + 
+      theme_minimal()
 
 
-z<-seq(-3.5,3.5,0.1)  # 71 points from -3.5 to 3.5 in 0.1 steps
-q<-seq(0.001,0.999,0.001)  # 1999 points from 0.1% to 99.9% on 0.1% steps
-dStandardNormal <- data.frame(Z=z, 
-                              Density=dnorm(z, mean=0, sd=1),
-                              Distribution=pnorm(z, mean=0, sd=1))  
-qStandardNormal <- data.frame(Q=q, 
-                              Quantile=qnorm(q, mean=0, sd=1))  
-head(dStandardNormal)
+# Función de distribución acumulada
+# --------------------------------------------------------------
+ggplot(datos, aes(x=z, y=distribucion )) + 
+  geom_line(colour="red") +
+  ggtitle ("Funci normal acumulada \npnorm( media=0, desviacion=1)") + 
+  theme_minimal()
 
+# Función de cuartiles
+# --------------------------------------------------------------
+q<-seq(0.01,0.99,0.01)  # 99 puntos de 1% a 99% en intervalos de 1%
+datos <- data.frame(Q=q, cuartiles=qnorm(q, mean=0, sd=1))  
+
+ggplot(datos, aes(x=q, y=cuartiles )) + 
+  geom_line(colour="blue")  + 
+  ggtitle ("Distribución normal acumulada \npnorm( media=0, desviacion=1)") + 
+  theme_minimal()
+
+
+# Función aleatorea
+# --------------------------------------------------------------
+datos <- data.frame(Z=z, 
+                    x=rnorm(z, mean=0, sd=1),
+                    y=rnorm(z, mean=0, sd=1)) 
+
+ggplot(datos, aes(x=x, y=y )) + 
+  geom_point(colour="blue")  + 
+  title("ddd")+
+  theme_minimal()
 
 
 # --------------------------------------------------------------
@@ -47,3 +77,16 @@ x
 # --------------------------------------------------------------
 
 x <- dpois(x = 2, lambda = 3)
+
+
+lower<-qpois(0.001, lambda=2.5)
+upper<-qpois(0.999, lambda=2,5)
+n<-seq(lower,upper,1)
+q<-seq(0.001,0.999,0.001)
+dPoisson25 <- data.frame(N=n, 
+                         Density=dpois(n, lambda=2.5),
+                         Distribution=ppois(n, lambda=2.5))  
+qPoisson25 <- data.frame(Q=q, Quantile=qpois(q, lambda=2.5))  
+head(dPoisson25)
+
+plot(dPoisson25$Density)

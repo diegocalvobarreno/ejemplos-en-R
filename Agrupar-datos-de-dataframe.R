@@ -13,14 +13,14 @@ head(datos, n=10)
 
 
 # --------------------------------------------------------------
-# Agrupar datos de un dataframe (forma 1)
+# Agrupar datos de un dataframe (forma 1) - sentencias sueltas
 # --------------------------------------------------------------
 datos2 <- group_by(datos, pais)
 summarise(datos2, media.edad = mean(edad, na.rm = TRUE))
 
 
 # --------------------------------------------------------------
-# Agrupar datos de un dataframe (forma 2)
+# Agrupar datos de un dataframe (forma 2) - sentencias anidadas
 # --------------------------------------------------------------
 filter(
   summarise(
@@ -34,7 +34,7 @@ filter(
 
 
 # --------------------------------------------------------------
-# Agrupar datos de un dataframe (forma 3)
+# Agrupar datos de un dataframe (forma 3) - Tuberias o PIPES
 # --------------------------------------------------------------
 
 datos %>%

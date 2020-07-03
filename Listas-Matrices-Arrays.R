@@ -6,7 +6,20 @@
 
 lista <- list(1,2,3,4,5)
 
+lista
+
+lista[["A"]]
+
+lista
+
+names(lista) <- c("A","B","C","D","E")
+
+lista[["E"]] <- NULL
+
 puntos <- list(x = cars[,1], y = cars[,2])
+
+puntos[[1]][[1]]
+
 plot(puntos)
 
 familia <- list(padre="peter", 

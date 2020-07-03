@@ -20,6 +20,8 @@ output:
 # Información sobre Markdown
 En este enlace de [R Markdown](http://rmarkdown.rstudio.com) podremos encontrar información de como utilizar la librería.
 
+## Subapartado
+Ejemplo de subapartado en Markdown
 
 # Carga librerías
 En este apartado se cargarán las *librerias* a utilizar pero para no _emborronar el código_, no mostraremos la ejecución.

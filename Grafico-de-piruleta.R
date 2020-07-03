@@ -1,5 +1,4 @@
 
-
 # --------------------------------------------------------------
 # Cargar librerias
 # --------------------------------------------------------------
@@ -32,35 +31,12 @@ datos <- datos %>%
 ggplot() +
   geom_point(data = datos, # Visualiza el cuerpo de las piruletas
              aes(x = valor, y = grupo, color = grupo), 
-             size = 4) +
+             size = 6) +
   
   geom_segment(data = datos, # Visualiza el palo de las piruletas 
                aes(x = 0, xend = valor, y = grupo, yend = grupo, color = grupo), 
                size=2 ) +
   
-  theme(legend.position = "none",
-        axis.text.x = element_text(angle = 0, vjust = 0.5, hjust = 0.5)) +
-  
-  labs(
-    x = "Valores",
-    y = "Grupos",
-    title = "Título",
-    subtitle = "Subtitulo menos importante",
-    caption = "\nPie de linea, para explicar lo que se vea conveniente"
-  ) + theme_minimal()
-
-
-
-# --------------------------------------------------------------
-# GRÁFICO DE PIRULETA - Con valores internos
-# --------------------------------------------------------------
-
-ggplot(datos, aes(valor, grupo, label = paste(round(valor, 0), "%")   )) +
-  geom_segment(aes(x = 0, y = grupo, xend = valor, yend = grupo), color = rgb(1, 0, 0, 0.4), size=3) +
-  geom_point(color = rgb(1, 0, 0, 0.6) , size = 14) +
-  geom_text(nudge_x = 0 , color= "white") +
-  theme(legend.position = "none",
-        axis.text.x = element_text(angle = 0, vjust = 0.5, hjust = 0.5)) +
   labs(
     x = "Valores",
     y = "Grupos",
@@ -77,9 +53,47 @@ ggplot(datos, aes(valor, grupo, label = paste(round(valor, 0), "%")   )) +
 # --------------------------------------------------------------
 
 datos <- datos %>%
+  mutate(porcentaje = valor / sum(valor) * 100)
+
+
+# --------------------------------------------------------------
+# GRÁFICO DE PIRULETA - Con valores internos
+# --------------------------------------------------------------
+
+ggplot(datos, 
+       aes(valor, 
+           grupo, 
+           label = paste(round(porcentaje, 0), "%")   )) +
+  
+  geom_segment(aes(x = 0, y = grupo, xend = valor, yend = grupo), 
+               color = rgb(1, 0, 0, 0.4), 
+               size=3) +
+  
+  geom_point(color = rgb(1, 0, 0, 0.6) , 
+             size = 14) +
+  
+  geom_text(nudge_x = 0 , 
+            color= "white") +
+  
+  labs(
+    x = "Valores",
+    y = "Grupos",
+    title = "Título",
+    subtitle = "Subtitulo menos importante",
+    caption = "\nPie de linea, para explicar lo que se vea conveniente"
+  ) + theme_minimal()
+
+
+
+
+# --------------------------------------------------------------
+# Preparación del conjunto de datos para el tercer gráfico
+# --------------------------------------------------------------
+
+datos <- datos %>%
   select(grupo, valor) %>%
   arrange(valor) %>%
-  mutate(media = mean(valor, na.rm = TRUE),
+  mutate(media = mean(valor),
          Tipo = ifelse(valor - media > 0, "Mayores", "Menores"),
          grupo = factor(grupo, levels = .$grupo))
 
@@ -89,10 +103,17 @@ datos <- datos %>%
 # GRÁFICO DE PIRULETA - Centrados en la media
 # --------------------------------------------------------------
 
-ggplot(datos, aes(x = valor, y = grupo, color = Tipo)) +
+ggplot(datos, 
+       aes(x = valor, 
+           y = grupo, 
+           color = Tipo)) +
   
-  geom_segment(aes(x = media, y = grupo, xend = valor, yend = grupo), ) +
+  geom_segment(aes(x = media, 
+                   y = grupo, 
+                   xend = valor, 
+                   yend = grupo), ) +
   
-  geom_point(size=3) +
+  geom_point(size=6) +
+  
    theme_minimal()
 

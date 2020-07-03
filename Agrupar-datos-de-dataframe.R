@@ -1,4 +1,11 @@
 
+# --------------------------------------------------------------
+# Cargar librerias
+# --------------------------------------------------------------
+
+#install.packages("dplyr") # Instalar librería de manipulación de dataframes "dplyr"
+library(dplyr) # Cargar la librería de manipulación de dataframes "dplyr"
+
 
 # --------------------------------------------------------------
 # Cargar datos del dataframe
@@ -16,28 +23,28 @@ head(datos, n=10)
 # Agrupar datos de un dataframe (forma 1) - sentencias sueltas
 # --------------------------------------------------------------
 datos2 <- group_by(datos, pais)
-summarise(datos2, media.edad = mean(edad, na.rm = TRUE))
+summarise(datos2, media.edad = mean(edad))
 
 
 # --------------------------------------------------------------
 # Agrupar datos de un dataframe (forma 2) - sentencias anidadas
 # --------------------------------------------------------------
-filter(
-  summarise(
+
+summarise(
     select(
       group_by(datos, pais),
-      edad:pais # Necesario para que nos considere la agrupoación como queremos
+      edad:pais # Indicar columnas implicadas en la agrupoación
     ),
-    media.edad = mean(edad, na.rm = TRUE)
-  )
+    media.edad = mean(edad)
 )
 
 
 # --------------------------------------------------------------
-# Agrupar datos de un dataframe (forma 3) - Tuberias o PIPES
+# Agrupar datos de un dataframe (forma 3) - Tuberías o PIPES
 # --------------------------------------------------------------
 
 datos %>%
   group_by(pais) %>%
-  select(sexo:pais) %>%
-  summarise(media.edad = mean(edad, na.rm = TRUE)) 
+  select(edad:pais) %>%
+  summarise(media.edad = mean(edad)) 
+

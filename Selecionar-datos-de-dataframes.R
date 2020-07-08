@@ -19,12 +19,19 @@ head(datos, n=10)
 #install.packages("dplyr") # Instalar de manipulación de dataframes "dplyr"
 library(dplyr) # Cargar la librería de manipulación de dataframes "dplyr"
 
-select(datos, -nombre, -edad) # Todos excepto la columna nombre y la edad
-
+select(datos, nombre, edad) # Seleccionar la columna nombre y edad
 
 
 # --------------------------------------------------------------
 # Seleccionar datos de un dataframe (ejemplo 2)
+# --------------------------------------------------------------
+
+
+select(datos, -nombre, -edad) # Seleccionar Todos excepto la columna nombre y edad
+
+
+# --------------------------------------------------------------
+# Seleccionar datos de un dataframe (ejemplo 3)
 # --------------------------------------------------------------
 
 distinct(select(datos, -nombre, -edad)) # Quedarse con los datos no repetidos
@@ -32,15 +39,15 @@ distinct(select(datos, -nombre, -edad)) # Quedarse con los datos no repetidos
 
 
 # --------------------------------------------------------------
-# Seleccionar datos de un dataframe (ejemplo 3)
-# --------------------------------------------------------------
-
-select(datos, nombre:edad) # Coger los datos desde la columna nombre a la columna edad
-
-
-
-# --------------------------------------------------------------
 # Seleccionar datos de un dataframe (ejemplo 4)
+# --------------------------------------------------------------
+
+select(datos, nombre:edad) # Seleccionar los datos desde la columna nombre a la columna edad
+
+
+
+# --------------------------------------------------------------
+# Seleccionar datos de un dataframe (ejemplo 5)
 # --------------------------------------------------------------
 
 select(datos, starts_with("n")) # Coger los datos las columnas que empiezan por "n"

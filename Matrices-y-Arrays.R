@@ -1,43 +1,4 @@
 
-
-# --------------------------------------------------------------
-# LISTAS
-# --------------------------------------------------------------
-
-lista <- list(1,2,3,4,5)
-
-lista # Visualizar lista
-
-lista[[1]] # Mostrar un elemento de la lista
-
-lista[[9]] # Intentar mostrar un elemento de la lista que no existe.
-
-names(lista) <- c("A","B","C","D","E") # Poner nombres a los elementos de la lista
-
-lista[["A"]] # Mostrar un elemento de la lista
-
-lista[["E"]] <- NULL # Eliminar un elemento de la lista
-
-
-
-puntos <- list(x = cars[,1], y = cars[,2]) # Crear lista de listas
-
-puntos[[1]][[1]] # Acceder a un elemento concreto de una sublista
-
-plot(puntos) # Visualizar la lista de listas
-
-
-
-familia <- list(padre="peter",   # Crear un lista con diferentes tipos de datos
-                madre="maria", 
-                numero.hijos=3, 
-                nombre.hijos=c("juan","carlos","eva"),
-                edades.hijos=c(7,5,3),
-                ciudad="madrid")
-
-
-
-
 # --------------------------------------------------------------
 # MATRICES
 # --------------------------------------------------------------
@@ -67,7 +28,9 @@ dim(m) # Determinar las dimensiones de la matriz
 
 dimnames(m)<-list(c("edad","peso"), c("paco","juan","maria")) # Poner nombres a las filas y a las columnas
 
+
 m # Visualizar la matriz
+
 
 dimnames(m) # Motrar los nombres de filas y columnas
 
@@ -120,9 +83,15 @@ rbind(m,c(9,9,9)) # Añadir una nueva fila
 # --------------------------------------------------------------
 
 datos<-array(c(45,46,65,55,170,167,48,49,68,56,169,165),c(2,3,2)) 
+
+datos
+
 dimnames(datos)<-list(c("hombres","mujeres"),c("edad","peso","altura"), c("cadiz","soria"))
 
 datos
 
-apply(datos,2,mean) # Calcular media por columnas
+apply(datos,1,mean) # Calcular media de la dimensión 1
 
+apply(datos,2,mean) # Calcular media de la dimensión 2
+
+apply(datos,3,mean) # Calcular media de la dimensión 3

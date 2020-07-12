@@ -3,7 +3,7 @@
 # Gráfico de burbujas (cambiando color y tamaño)
 # --------------------------------------------------------------
 
-install.packages("ggplot2") # Instalar paquete de visualización gráfica
+#install.packages("ggplot2") # Instalar paquete de visualización gráfica
 library(ggplot2) # Cargar la librería gráfica "ggplot2"
 
 

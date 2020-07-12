@@ -5,7 +5,7 @@
 
 # Cargar librerias
 # --------------------------------------------------------------
-install.packages("reshape2") # Instalar paquete modificar dataframes
+#install.packages("reshape2") # Instalar paquete modificar dataframes
 library(reshape2) # Cargar la librería "reshape2"
 
 #install.packages("ggplot2") # Instalar paquete de visualización gráfica
